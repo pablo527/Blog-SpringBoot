@@ -7,7 +7,7 @@ import java.util.List;
 public interface IPublicationService{
 
     PublicationDTO createPublication(PublicationDTO publication);
-    List<PublicationDTO> getAllPublications();
+    List<PublicationDTO> getAllPublications(int size);
     PublicationDTO getPublication(Long id);
     PublicationDTO updatePublication(PublicationDTO publicationDTO, long id);
     String deleteUpdate(Long id);

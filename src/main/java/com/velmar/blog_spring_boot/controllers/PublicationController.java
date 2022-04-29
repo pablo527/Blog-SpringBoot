@@ -16,17 +16,19 @@ public class PublicationController {
     @Autowired
     IPublicationService service;
 
-    @PostMapping()
-    public ResponseEntity<PublicationDTO> savePublication(@RequestBody PublicationDTO publicationDTO){
-        return new ResponseEntity<>(service.createPublication(publicationDTO), HttpStatus.CREATED);
-    }
     @GetMapping()
-    public List<PublicationDTO> getAllPublications(){
-        return service.getAllPublications();
+    public List<PublicationDTO> getAllPublications(
+            @RequestParam(defaultValue = "10", name = "size",required = false )int size){
+        return service.getAllPublications(size);
     }
     @GetMapping("{id}")
     public ResponseEntity<PublicationDTO> getPublicationById(@PathVariable Long id){
         return ResponseEntity.ok(service.getPublication(id));
+    }
+
+    @PostMapping()
+    public ResponseEntity<PublicationDTO> savePublication(@RequestBody PublicationDTO publicationDTO){
+        return new ResponseEntity<>(service.createPublication(publicationDTO), HttpStatus.CREATED);
     }
     @PutMapping("{id}")
     public ResponseEntity<PublicationDTO> updatePublication(@RequestBody PublicationDTO publication, @PathVariable Long id){

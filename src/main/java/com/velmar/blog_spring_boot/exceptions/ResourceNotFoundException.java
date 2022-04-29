@@ -3,10 +3,8 @@ package com.velmar.blog_spring_boot.exceptions;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
-import java.util.function.Supplier;
-
 @ResponseStatus(value = HttpStatus.NOT_FOUND)
-public class ResourceNotFoundException extends RuntimeException implements Supplier<X> {
+public class ResourceNotFoundException extends RuntimeException {
     private String resourceName;
     private String fieldName;
     private Long resourceValue;
